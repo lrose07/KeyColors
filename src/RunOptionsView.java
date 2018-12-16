@@ -2,9 +2,8 @@ import org.jnativehook.NativeHookException;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
-public class RunOptionsView {
+class RunOptionsView {
 
     private KeyLogger logger;
 

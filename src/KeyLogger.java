@@ -29,12 +29,17 @@ public class KeyLogger implements NativeKeyListener {
     }
 
     void stopLogger() {
+        createColorMap();
         System.exit(0);
     }
 
     void startLogger() throws NativeHookException {
         GlobalScreen.registerNativeHook();
         GlobalScreen.addNativeKeyListener(new KeyLogger());
+    }
+
+    private void createColorMap() {
+        new ColorMapView();
     }
 
     /**

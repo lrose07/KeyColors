@@ -37,6 +37,7 @@ public class KeyLogger implements NativeKeyListener {
      */
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
+        System.out.println(getNewMap());
         kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()), newMap);
         System.out.println("newMap value in nativeKeyPressed(): " + newMap);
         newMap = false;
@@ -55,9 +56,18 @@ public class KeyLogger implements NativeKeyListener {
             newSession = false;
         }
         System.out.println("newMap value in startLogger(): " + newMap);
-        newMap = true;
+        setNewMap(true);
         System.out.println("newMap value in startLogger(): " + newMap);
         kpWriter = new KeyPressWriter();
+    }
+
+    private boolean getNewMap() {
+        return newMap;
+    }
+
+    private void setNewMap(boolean val) {
+        System.out.println("hit setter");
+        newMap = val;
     }
 
     private void createColorMap() {

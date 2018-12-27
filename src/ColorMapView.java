@@ -12,11 +12,6 @@ import java.util.Scanner;
  *
  * @author Lauren Rose
  * @version 26 December 2018
- *
- * All code herein is for use only by the author. Author has
- * taken necessary measures to protect this code from being
- * accessible to other students, and therefore is not
- * responsible for any unauthorized use.
  */
 class ColorMapView {
 

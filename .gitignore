@@ -148,4 +148,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Developer added
+keyPresses.txt
+
 # End of https://www.gitignore.io/api/git,java,macos,intellij

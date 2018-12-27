@@ -22,8 +22,8 @@ class ColorMapView {
 
         JPanel mapPanel = new JPanel(new GridLayout(gridRows, gridColumns));
 
-        for (int i = 0; i < (colors.length); i++) {
-            mapPanel.add(new ColorTile(colors[i]));
+        for (Color color : colors) {
+            mapPanel.add(new ColorTile(color));
         }
 
         frame.add(mapPanel);

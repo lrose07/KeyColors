@@ -11,12 +11,14 @@ class KeyPressWriter {
 
     void writeKeyPress(String keyPressed) {
         File file = new File("keyPresses.txt");
+        System.out.println("New session: " + newSession);
+        System.out.println(file.exists() && file.isFile() && newSession);
         if (file.exists() && file.isFile() && newSession)
         {
-            boolean isDeleted = file.delete();
-            if (!isDeleted) {
-                System.out.println("File was not deleted");
-            }
+            file.delete();
+//            if (!isDeleted) {
+//                System.out.println("File was not deleted");
+//            }
             newSession = false;
         }
         try {
@@ -24,7 +26,6 @@ class KeyPressWriter {
             writer.write(keyPressed);
             writer.newLine();
             writer.flush();
-            //System.out.println(writer.toString());
         } catch (IOException e) {
             System.out.println("Error while writing to file.");
         } finally {

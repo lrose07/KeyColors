@@ -19,6 +19,8 @@ import org.jnativehook.keyboard.NativeKeyListener;
 public class KeyLogger implements NativeKeyListener {
     private KeyPressWriter kpWriter;
 
+    private boolean newSession = true;
+
     /**
      * Creates a new KeyLogger object
      */
@@ -34,18 +36,21 @@ public class KeyLogger implements NativeKeyListener {
      */
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-        //System.out.println(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()) + " pressed");
         kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()));
     }
 
     void stopLogger() {
         createColorMap();
-        //System.exit(0);
     }
 
     void startLogger() throws NativeHookException {
-        GlobalScreen.registerNativeHook();
-        GlobalScreen.addNativeKeyListener(new KeyLogger());
+        if (newSession) {
+            GlobalScreen.registerNativeHook();
+            GlobalScreen.addNativeKeyListener(new KeyLogger());
+            System.out.println("Logger started");
+            newSession = false;
+        }
+        kpWriter = new KeyPressWriter();
     }
 
     private void createColorMap() {

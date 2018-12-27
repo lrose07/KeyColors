@@ -13,6 +13,9 @@ class RunOptionsView {
 
     private KeyLogger logger;
 
+    //private JButton start;
+    private JButton showMap;;
+
     RunOptionsView() {
         logger = new KeyLogger();
 
@@ -20,16 +23,17 @@ class RunOptionsView {
         JPanel optionsButtonsPanel = new JPanel();
 
         JButton start = new JButton("Start logger");
-        JButton stop = new JButton("Stop logger");
+        showMap = new JButton("Show map");
+        showMap.setEnabled(false);
 
         start.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "none");
-        stop.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "none");
+        showMap.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "none");
 
         start.addActionListener(e -> startClicked());
-        stop.addActionListener(e -> stopClicked());
+        showMap.addActionListener(e -> showMapClicked());
 
         optionsButtonsPanel.add(start);
-        optionsButtonsPanel.add(stop);
+        optionsButtonsPanel.add(showMap);
 
         frame.add(optionsButtonsPanel);
         frame.setSize(new Dimension(300, 100));
@@ -42,9 +46,10 @@ class RunOptionsView {
         } catch (NativeHookException e) {
             System.out.println("Error with NativeHook.");
         }
+        showMap.setEnabled(true);
     }
 
-    private void stopClicked() {
+    private void showMapClicked() {
         logger.stopLogger();
     }
 }

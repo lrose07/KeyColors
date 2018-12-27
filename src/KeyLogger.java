@@ -20,6 +20,7 @@ public class KeyLogger implements NativeKeyListener {
     private KeyPressWriter kpWriter;
 
     private boolean newSession = true;
+    private boolean newMap = true;
 
     /**
      * Creates a new KeyLogger object
@@ -36,7 +37,10 @@ public class KeyLogger implements NativeKeyListener {
      */
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-        kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()));
+        kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()), newMap);
+        System.out.println("newMap value in nativeKeyPressed(): " + newMap);
+        newMap = false;
+        System.out.println("newMap value in nativeKeyPressed(): " + newMap);
     }
 
     void stopLogger() {
@@ -50,6 +54,9 @@ public class KeyLogger implements NativeKeyListener {
             System.out.println("Logger started");
             newSession = false;
         }
+        System.out.println("newMap value in startLogger(): " + newMap);
+        newMap = true;
+        System.out.println("newMap value in startLogger(): " + newMap);
         kpWriter = new KeyPressWriter();
     }
 

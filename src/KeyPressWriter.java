@@ -3,23 +3,22 @@ import java.io.*;
 class KeyPressWriter {
 
     private BufferedWriter writer;
-    private boolean newSession;
+    //private boolean newSession = true;
 
     KeyPressWriter() {
-        newSession = true;
+        //newSession = true;
+        //System.out.println("New session in KeyLogger constructor: " + newSession);
     }
 
-    void writeKeyPress(String keyPressed) {
+    void writeKeyPress(String keyPressed, boolean newMap) {
         File file = new File("keyPresses.txt");
-        System.out.println("New session: " + newSession);
-        System.out.println(file.exists() && file.isFile() && newSession);
-        if (file.exists() && file.isFile() && newSession)
-        {
+        //System.out.println("New session: " + newMap);
+        if (file.exists() && file.isFile() && newMap) {
+            System.out.println("hit if statement");
             file.delete();
 //            if (!isDeleted) {
 //                System.out.println("File was not deleted");
 //            }
-            newSession = false;
         }
         try {
             writer = new BufferedWriter(new FileWriter(file, true));

@@ -16,6 +16,9 @@ class RunOptionsView {
         JButton start = new JButton("Start logger");
         JButton stop = new JButton("Stop logger");
 
+        start.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "none");
+        stop.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "none");
+
         start.addActionListener(e -> startClicked());
         stop.addActionListener(e -> stopClicked());
 

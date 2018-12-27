@@ -5,6 +5,19 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class creates the color tile view, based on the key
+ * stroke data that is provided in a text file from the
+ * key logger.
+ *
+ * @author Lauren Rose
+ * @version 26 December 2018
+ *
+ * All code herein is for use only by the author. Author has
+ * taken necessary measures to protect this code from being
+ * accessible to other students, and therefore is not
+ * responsible for any unauthorized use.
+ */
 class ColorMapView {
 
     private int mapWidth;

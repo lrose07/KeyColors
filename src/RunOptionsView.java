@@ -3,6 +3,17 @@ import org.jnativehook.NativeHookException;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class creates the view containing the start and stop buttons.
+ *
+ * @author Lauren Rose
+ * @version 26 December 2018
+ *
+ * All code herein is for use only by the author. Author has
+ * taken necessary measures to protect this code from being
+ * accessible to other students, and therefore is not
+ * responsible for any unauthorized use.
+ */
 class RunOptionsView {
 
     private KeyLogger logger;

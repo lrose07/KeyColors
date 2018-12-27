@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.io.*;
 
 class KeyPressWriter {
@@ -15,7 +13,10 @@ class KeyPressWriter {
         File file = new File("keyPresses.txt");
         if (file.exists() && file.isFile() && newSession)
         {
-            file.delete();
+            boolean isDeleted = file.delete();
+            if (!isDeleted) {
+                System.out.println("File was not deleted");
+            }
             newSession = false;
         }
         try {
@@ -23,7 +24,7 @@ class KeyPressWriter {
             writer.write(keyPressed);
             writer.newLine();
             writer.flush();
-            System.out.println(writer.toString());
+            //System.out.println(writer.toString());
         } catch (IOException e) {
             System.out.println("Error while writing to file.");
         } finally {

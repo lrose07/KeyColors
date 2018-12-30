@@ -56,10 +56,33 @@ class ColorMapView {
         // find the closest square
         // move outwards from there to find best dimensions
         // maybe start at a particular aspect ratio first?
-        mapWidth = 500;
-        mapHeight = 500;
-        gridRows = (int) Math.sqrt((double) dataSetSize);
-        gridColumns = (int) Math.sqrt((double) dataSetSize);
+        boolean betterDimensionsFound = false;
+
+        if (isPrime(dataSetSize)) {
+            dataSetSize--;
+        }
+
+
+
+        if (!betterDimensionsFound) {
+            mapWidth = 500;
+            mapHeight = 500;
+            gridRows = (int) Math.sqrt((double) dataSetSize);
+            gridColumns = (int) Math.sqrt((double) dataSetSize);
+        }
+    }
+
+    private boolean isPrime(int number) {
+        int sqrt = (int) Math.sqrt((double) number);
+        boolean factorFound = false;
+
+        for (int i = sqrt; i >= 2 && !factorFound; i--) {
+            if (number % i == 0) {
+                factorFound = true;
+            }
+        }
+
+        return factorFound;
     }
 
     private void readFile() {

@@ -5,13 +5,15 @@ class KeyPressWriter {
     private BufferedWriter writer;
     //private boolean newSession = true;
 
+    private File file = new File("keyPresses.txt");;
+
     KeyPressWriter() {
         //newSession = true;
         //System.out.println("New session in KeyLogger constructor: " + newSession);
     }
 
     void writeKeyPress(String keyPressed, boolean newMap) {
-        File file = new File("keyPresses.txt");
+        file = new File("keyPresses.txt");
         //System.out.println("New session: " + newMap);
         if (file.exists() && file.isFile() && newMap) {
             System.out.println("hit if statement");
@@ -33,6 +35,20 @@ class KeyPressWriter {
             } catch (IOException e) {
                 System.out.println("Something strange has happened");
             }
+        }
+    }
+
+
+    void deleteFile() {
+//        file.delete();
+//        try {
+//            file.delete();
+//        } catch (NullPointerException e) {
+//            System.out.println("File not found");
+//        }
+        if (file.exists() && file.isFile()) {
+            System.out.println("hit if statement");
+            file.delete();
         }
     }
 }

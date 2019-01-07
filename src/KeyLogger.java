@@ -37,7 +37,7 @@ public class KeyLogger implements NativeKeyListener {
      */
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-        setNewMap(true);
+        //setNewMap(true);
         System.out.println(getNewMap());
         kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()), newMap);
         System.out.println("newMap value in nativeKeyPressed(): " + newMap);
@@ -50,6 +50,7 @@ public class KeyLogger implements NativeKeyListener {
     }
 
     void startLogger() throws NativeHookException {
+        kpWriter.deleteFile();
         if (newSession) {
             GlobalScreen.registerNativeHook();
             GlobalScreen.addNativeKeyListener(new KeyLogger());

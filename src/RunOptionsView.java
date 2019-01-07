@@ -41,6 +41,7 @@ class RunOptionsView {
     }
 
     private void startClicked() {
+
         try {
             logger.startLogger();
         } catch (NativeHookException e) {

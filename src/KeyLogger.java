@@ -37,12 +37,8 @@ public class KeyLogger implements NativeKeyListener {
      */
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-        //setNewMap(true);
-        System.out.println(getNewMap());
         kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()), newMap);
-        System.out.println("newMap value in nativeKeyPressed(): " + newMap);
         newMap = false;
-        System.out.println("newMap value in nativeKeyPressed(): " + newMap);
     }
 
     void stopLogger() {
@@ -54,21 +50,17 @@ public class KeyLogger implements NativeKeyListener {
         if (newSession) {
             GlobalScreen.registerNativeHook();
             GlobalScreen.addNativeKeyListener(new KeyLogger());
-            System.out.println("Logger started");
             newSession = false;
         }
-        System.out.println("newMap value in startLogger(): " + newMap);
         setNewMap(true);
-        System.out.println("newMap value in startLogger(): " + newMap);
         kpWriter = new KeyPressWriter();
     }
 
-    private boolean getNewMap() {
-        return newMap;
-    }
+//    private boolean getNewMap() {
+//        return newMap;
+//    }
 
     private void setNewMap(boolean val) {
-        System.out.println("hit setter");
         newMap = val;
     }
 

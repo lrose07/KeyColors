@@ -3,23 +3,16 @@ import java.io.*;
 class KeyPressWriter {
 
     private BufferedWriter writer;
-    private boolean newSession;
+    private File file = new File("keyPresses.txt");;
 
     KeyPressWriter() {
-        newSession = true;
+
     }
 
-    void writeKeyPress(String keyPressed) {
-        File file = new File("keyPresses.txt");
-        System.out.println("New session: " + newSession);
-        System.out.println(file.exists() && file.isFile() && newSession);
-        if (file.exists() && file.isFile() && newSession)
-        {
-            file.delete();
-//            if (!isDeleted) {
-//                System.out.println("File was not deleted");
-//            }
-            newSession = false;
+    void writeKeyPress(String keyPressed, boolean newMap) {
+        file = new File("keyPresses.txt");
+        if (newMap) {
+            deleteFile();
         }
         try {
             writer = new BufferedWriter(new FileWriter(file, true));
@@ -34,6 +27,13 @@ class KeyPressWriter {
             } catch (IOException e) {
                 System.out.println("Something strange has happened");
             }
+        }
+    }
+
+
+    void deleteFile() {
+        if (file.exists() && file.isFile()) {
+            file.delete();
         }
     }
 }

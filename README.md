@@ -13,3 +13,5 @@ Note that the logger will continue to run after pressing "Stop" but a new captur
 
 _Please use caution when entering sensitive information like passwords while the logger is running, since it captures 
 all keystrokes, and saves them in plain text. Future enhancements will include sensitive data handling._
+
+_Update: The file containing the keystrokes is destroyed at the end of every logging session, but is still readable during a session. Continue to use caution when typing sensitive data during a logging session._

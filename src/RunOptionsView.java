@@ -14,7 +14,8 @@ class RunOptionsView {
     private KeyLogger logger;
 
     //private JButton start;
-    private JButton showMap;;
+    private JButton showMap;
+    private JLabel loggerStatus;
 
     RunOptionsView() {
         logger = new KeyLogger();
@@ -23,6 +24,7 @@ class RunOptionsView {
         JPanel optionsButtonsPanel = new JPanel();
 
         JButton start = new JButton("Start logger");
+        loggerStatus = new JLabel("Status: stopped");
         showMap = new JButton("Show map");
         showMap.setEnabled(false);
 
@@ -34,9 +36,11 @@ class RunOptionsView {
 
         optionsButtonsPanel.add(start);
         optionsButtonsPanel.add(showMap);
+        optionsButtonsPanel.add(loggerStatus);
 
         frame.add(optionsButtonsPanel);
         frame.setSize(new Dimension(300, 100));
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
@@ -44,6 +48,7 @@ class RunOptionsView {
 
         try {
             logger.startLogger();
+            loggerStatus.setText("Status: running");
         } catch (NativeHookException e) {
             System.out.println("Error with NativeHook.");
         }
@@ -52,5 +57,6 @@ class RunOptionsView {
 
     private void showMapClicked() {
         logger.stopLogger();
+        loggerStatus.setText("Status: stopped");
     }
 }

@@ -150,5 +150,7 @@ Temporary Items
 
 # Developer added
 keyPresses.txt
+.idea/artifacts/*
+src/META-INF/*
 
 # End of https://www.gitignore.io/api/git,java,macos,intellij

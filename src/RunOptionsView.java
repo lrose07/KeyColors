@@ -45,6 +45,7 @@ class RunOptionsView {
     }
 
     private void startClicked() {
+
         try {
             logger.startLogger();
             loggerStatus.setText("Status: running");

@@ -20,6 +20,7 @@ public class KeyLogger implements NativeKeyListener {
     private KeyPressWriter kpWriter;
 
     private boolean newSession = true;
+    private boolean newMap = true;
 
     /**
      * Creates a new KeyLogger object
@@ -36,7 +37,8 @@ public class KeyLogger implements NativeKeyListener {
      */
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-        kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()));
+        kpWriter.writeKeyPress(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()), newMap);
+        newMap = false;
     }
 
     void stopLogger() {
@@ -44,13 +46,22 @@ public class KeyLogger implements NativeKeyListener {
     }
 
     void startLogger() throws NativeHookException {
+        kpWriter.deleteFile();
         if (newSession) {
             GlobalScreen.registerNativeHook();
             GlobalScreen.addNativeKeyListener(new KeyLogger());
-            System.out.println("Logger started");
             newSession = false;
         }
+        setNewMap(true);
         kpWriter = new KeyPressWriter();
+    }
+
+//    private boolean getNewMap() {
+//        return newMap;
+//    }
+
+    private void setNewMap(boolean val) {
+        newMap = val;
     }
 
     private void createColorMap() {

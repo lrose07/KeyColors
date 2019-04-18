@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -70,6 +69,7 @@ class ColorMapView {
             while (sc.hasNext()) {
                 presses.add(sc.next());
             }
+            file.delete();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }

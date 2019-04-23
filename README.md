@@ -14,4 +14,4 @@ Note that the logger will continue to run after pressing "Show Map" but a new ca
 _Please use caution when entering sensitive information like passwords while the logger is running, since it captures 
 all keystrokes, and saves them in plain text. Future enhancements will include sensitive data handling._
 
-_Update: The file containing the keystrokes is destroyed at the end of every logging session, but is still readable during a session. Continue to use caution when typing sensitive data during a logging session._
+_Update: The file containing the keystrokes is destroyed at the end of every logging session, but is still readable during a session. Continue to use caution when typing sensitive data during a logging session. Also, information can be decrypted from the picture representation of your keystrokes, so again, use immense caution when typing sensitive information with the logger running, and if you have made such keystrokes, do not share your color map online._

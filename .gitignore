@@ -154,3 +154,5 @@ keyPresses.txt
 src/META-INF/*
 
 # End of https://www.gitignore.io/api/git,java,macos,intellij
+
+key-logger-test.iml

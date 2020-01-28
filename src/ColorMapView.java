@@ -1,10 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class creates the color tile view, based on the key
@@ -26,6 +29,8 @@ class ColorMapView {
 
     private HashMap<String, Color> colorAssignments;
 
+    private static Logger lggr = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
     ColorMapView() {
         JFrame frame = new JFrame("Color Map");
 
@@ -43,7 +48,7 @@ class ColorMapView {
         frame.setVisible(true);
     }
 
-    private class ColorTile extends JPanel {
+    private static class ColorTile extends JPanel {
         ColorTile(Color color) {
             this.setBackground(color);
         }
@@ -62,21 +67,25 @@ class ColorMapView {
         // maybe start at a particular aspect ratio first?
         mapWidth = 500;
         mapHeight = 500;
-        gridRows = (int) Math.sqrt((double) dataSetSize);
-        gridColumns = (int) Math.sqrt((double) dataSetSize);
+        gridRows = (int) Math.sqrt(dataSetSize);
+        gridColumns = (int) Math.sqrt(dataSetSize);
     }
 
     private void readFile() {
         presses = new ArrayList<>();
         File file = new File("keyPresses.txt");
-        try {
-            Scanner sc = new Scanner(file);
+        try (Scanner sc = new Scanner(file)) {
             while (sc.hasNext()) {
                 presses.add(sc.next());
             }
-            file.delete();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            lggr.log(Level.INFO, "File not found");
+        }
+
+        try {
+            Files.deleteIfExists(FileSystems.getDefault().getPath("keyPresses.txt"));
+        } catch (IOException e) {
+            lggr.log(Level.INFO, "File not found");
         }
     }
 

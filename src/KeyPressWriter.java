@@ -1,11 +1,14 @@
-import java.io.*;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.nio.file.Files;
 
 class KeyPressWriter {
-
-//    private BufferedWriter writer;
-    private File file = new File("keyPresses.txt");
 
     private static Logger lggr = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -14,7 +17,7 @@ class KeyPressWriter {
     }
 
     void writeKeyPress(String keyPressed, boolean newMap) {
-        file = new File("keyPresses.txt");
+        File file = new File("keyPresses.txt");
         if (newMap) {
             deleteFile();
         }
@@ -29,8 +32,11 @@ class KeyPressWriter {
 
 
     void deleteFile() {
-        if (file.exists() && file.isFile()) {
-            file.delete();
+        try {
+            Files.deleteIfExists(FileSystems.getDefault().getPath("keyPresses.txt"));
+        } catch (IOException e) {
+            lggr.log(Level.INFO, "File not found");
         }
+
     }
 }

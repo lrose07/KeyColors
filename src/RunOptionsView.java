@@ -1,7 +1,8 @@
 import org.jnativehook.NativeHookException;
-
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class creates the view containing the start and stop buttons.
@@ -12,6 +13,8 @@ import java.awt.*;
 class RunOptionsView {
 
     private KeyLogger logger;
+
+    private static Logger errorLggr = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     //private JButton start;
     private JButton showMap;
@@ -50,7 +53,7 @@ class RunOptionsView {
             logger.startLogger();
             loggerStatus.setText("Status: running");
         } catch (NativeHookException e) {
-            System.out.println("Error with NativeHook.");
+            errorLggr.log(Level.INFO, "Error with NativeHook.");
         }
         showMap.setEnabled(true);
     }

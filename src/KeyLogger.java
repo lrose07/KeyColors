@@ -1,6 +1,5 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
@@ -52,16 +51,12 @@ public class KeyLogger implements NativeKeyListener {
             GlobalScreen.addNativeKeyListener(new KeyLogger());
             newSession = false;
         }
-        setNewMap(true);
+        setNewMap();
         kpWriter = new KeyPressWriter();
     }
 
-//    private boolean getNewMap() {
-//        return newMap;
-//    }
-
-    private void setNewMap(boolean val) {
-        newMap = val;
+    private void setNewMap() {
+        newMap = true;
     }
 
     private void createColorMap() {
@@ -72,11 +67,15 @@ public class KeyLogger implements NativeKeyListener {
      * For handling the released keys. Not needed in this implementation.
      */
     @Override
-    public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) { }
+    public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
+        // Method not used in this implementation
+    }
 
     /**
      * For handling the typed keys. Not needed in this implementation.
      */
     @Override
-    public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) { }
+    public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
+        // Method not used in this implementation
+    }
 }

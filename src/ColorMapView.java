@@ -67,8 +67,8 @@ class ColorMapView {
         // maybe start at a particular aspect ratio first?
         mapWidth = 500;
         mapHeight = 500;
-        gridRows = (int) Math.sqrt(dataSetSize);
-        gridColumns = (int) Math.sqrt(dataSetSize);
+        gridRows = (dataSetSize != 0) ? (int) Math.sqrt(dataSetSize) : 1;
+        gridColumns = (dataSetSize != 0) ? (int) Math.sqrt(dataSetSize) : 1;
     }
 
     private void readFile() {

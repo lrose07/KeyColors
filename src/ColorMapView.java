@@ -91,15 +91,9 @@ class ColorMapView {
 
     private void assignColors() {
         colors = new Color[presses.size()];
-        // write data set for colors
         int locationInData = 0;
         for (String entry : presses) {
-            if (entry.contains("Unknown")) {
-                colors[locationInData] = Color.GRAY;
-            } else {
-                colors[locationInData] = colorAssignments.get(entry);
-            }
-
+            colors[locationInData] = colorAssignments.get(entry);
             locationInData++;
         }
     }
@@ -112,6 +106,8 @@ class ColorMapView {
         buildCapsLockRow();
         buildShiftRow();
         buildSpaceRow();
+
+        colorAssignments.put(null, Color.GRAY);
     }
 
     private void buildNumberRow() {
